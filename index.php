@@ -36,6 +36,9 @@ session_start();
         <nav class="mx-auto">
             <ul class="nav nav-pills d-flex flex-row justify-content-around">
                 <li class="nav-item nav-moves">
+                    <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=new_game" data-toggle="tooltip" data-placement="bottom" title="Start a new game">New game</a>
+                </li>
+                <li class="nav-item nav-moves">
                     <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=hit" data-toggle="tooltip" data-placement="bottom" title="Player draws another card">Hit</a>
                 </li>
                 <li class="nav-item nav-moves">
@@ -63,7 +66,20 @@ if (!isset($_SESSION['blackjack'])) {
 $getSessionPlayer = $_SESSION['blackjack']->getPlayer();
 $getSessionDealer = $_SESSION['blackjack']->getDealer();
 
+if($getSessionPlayer->getScore($getSessionPlayer) > Player::TWENTY_ONE){
+    $getSessionPlayer->hasLost();
+}
+elseif($getSessionDealer->getScore($getSessionDealer) > Player::TWENTY_ONE){
+    $getSessionDealer->hasLost();
+}
+elseif($getSessionPlayer->getScore($getSessionPlayer) > Player::TWENTY_ONE && $getSessionDealer->getScore($getSessionDealer) > Player::TWENTY_ONE){
+    $getSessionPlayer->hasLost();
+}
+
 if(isset($_GET['action'])){
+    if ($_GET['action'] === 'new_game') {
+        $_SESSION['blackjack'] = new Blackjack();
+    }
     if ($_GET['action'] === 'hit') {
         $getSessionPlayer->hit($getSessionPlayer);
     }
@@ -87,6 +103,10 @@ if(isset($_GET['action'])){
 }
 if ($getSessionPlayer->hasLost()) {
     echo "<h4 class='text-center text-danger'>You lose, the dealer wins.</h4>";
+    session_destroy();
+}
+if ($getSessionDealer->hasLost()) {
+    echo "<h4 class='text-center text-danger'>You win, the dealer loses.</h4>";
     session_destroy();
 }
 elseif($getSessionDealer->hasLost() && !$getSessionPlayer->hasLost()) {
