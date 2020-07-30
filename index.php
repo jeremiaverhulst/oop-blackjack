@@ -86,14 +86,15 @@ if(isset($_GET['action'])){
     if ($_GET['action'] === 'stand') {
         $getSessionDealer->hit($getSessionDealer);
         if($getSessionPlayer->getScore($getSessionPlayer) < $getSessionDealer->getScore($getSessionDealer)){
-            $getSessionPlayer->hasLost();
+            echo "<h4 class='text-center text-danger'>You lose, the dealer wins.</h4>";
+            session_destroy();
         }
         elseif($getSessionPlayer->getScore($getSessionPlayer) === $getSessionDealer->getScore($getSessionDealer)){
-            echo "<h4 class='text-center text-danger'>You lose</h4>";
+            echo "<h4 class='text-center text-danger'>You lose, the dealer wins.</h4>";
             session_destroy();
         }
         elseif($getSessionPlayer->getScore($getSessionPlayer) > $getSessionDealer->getScore($getSessionDealer)){
-            echo "<h4 class='text-center text-success'>You win</h4>";
+            echo "<h4 class='text-center text-success'>You win, the dealer loses.</h4>";
             session_destroy();
         }
     }
@@ -106,7 +107,7 @@ if ($getSessionPlayer->hasLost()) {
     session_destroy();
 }
 if ($getSessionDealer->hasLost()) {
-    echo "<h4 class='text-center text-danger'>You win, the dealer loses.</h4>";
+    echo "<h4 class='text-center text-success'>You win, the dealer loses.</h4>";
     session_destroy();
 }
 elseif($getSessionDealer->hasLost() && !$getSessionPlayer->hasLost()) {
