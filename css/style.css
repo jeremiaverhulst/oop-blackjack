@@ -5,5 +5,55 @@
 }
 
 body {
+    background-color: #226331;
+    color: #ffd700;
+}
 
+h4 {
+    padding: 16px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50%;
+    margin: 0 auto;
+}
+
+.subtitle {
+    font-weight: 300;
+}
+
+nav {
+    width: 398px;
+    padding: 16px 0;
+}
+
+.nav-moves {
+    width: 106px;
+}
+
+.nav-moves>a {
+    border: 1px solid #ffd700;
+    background-color: #1b4f27;
+    color: #ffd700;
+}
+
+.nav-moves>a:hover {
+    border: 1px solid #ffd700;
+    background-color: #ffd700;
+    color: #1b4f27;
+}
+
+span.blackjack-card {
+    display: inline-block;
+    background-color: #fff;
+    font-size: 156px;
+    line-height: 0.78;
+    margin: 10px;
+    height: 156px;
+    width: 120px;
+    border-radius: 5px;
+}
+
+.scoreOutput {
+    width: 50%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ffd700;
 }

@@ -39,19 +39,23 @@ class Blackjack
     public function showAll() {
         $scorePlayer = 0;
         $scoreDealer = 0;
-        echo "<h2 class='text-center'>Player</h2><br>";
+        echo "<h2 class='text-center'>Player</h2>";
+        echo "<div class='container text-center'>";
         foreach($this->player->getCards() AS $card)
         {
             echo $card->getUnicodeCharacter(true);
             $scorePlayer += $card->getValue();
         }
-        echo "<h3 class='text-center'>Score: {$scorePlayer}</h3><br>";
-        echo "<h2 class='text-center'>Dealer</h2><br>";
+        echo "</div>";
+        echo "<h3 class='text-center scoreOutput mx-auto'>Score: {$scorePlayer}</h3>";
+        echo "<h2 class='text-center'>Dealer</h2>";
+        echo "<div class='container text-center'>";
         foreach($this->dealer->getCards() AS $card) {
             echo $card->getUnicodeCharacter(true);
             $scoreDealer += $card->getValue();
         }
-        echo "<h3 class='text-center'>Score: {$scoreDealer}</h3><br>";
+        echo "</div>";
+        echo "<h3 class='text-center'>Score: {$scoreDealer}</h3>";
     }
 
 

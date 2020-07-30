@@ -29,19 +29,19 @@ session_start();
 <header>
     <div class="container">
         <h1 class="text-center">Blackjack</h1>
-        <p class="text-center">- made with OOP PHP -</p>
+        <p class="text-center subtitle"><span>—</span> made with OOP PHP <span>—</span></p>
     </div>
 </header>
 <div class="container">
-<nav class="d-flex flex-row justify-content-center">
-    <ul class="nav nav-pills">
-        <li class="nav-item">
+<nav class="mx-auto">
+    <ul class="nav nav-pills d-flex flex-row justify-content-around">
+        <li class="nav-item nav-moves">
             <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=hit">Hit</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item nav-moves">
             <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=stand">Stand</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item nav-moves">
             <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=surrender">Surrender</a>
         </li>
     </ul>
@@ -65,13 +65,15 @@ if ($_GET['action'] === 'hit') {
 if ($_GET['action'] === 'stand') {
     $getSessionDealer->hit($getSessionDealer);
     if($getSessionPlayer->getScore($getSessionPlayer) < $getSessionDealer->getScore($getSessionDealer)){
-        echo "<h4 class='text-center text-danger'>You lose</h4>";
+        $getSessionPlayer->hasLost();
     }
     elseif($getSessionPlayer->getScore($getSessionPlayer) === $getSessionDealer->getScore($getSessionDealer)){
         echo "<h4 class='text-center text-danger'>You lose</h4>";
+        session_destroy();
     }
     elseif($getSessionPlayer->getScore($getSessionPlayer) > $getSessionDealer->getScore($getSessionDealer)){
         echo "<h4 class='text-center text-success'>You win</h4>";
+        session_destroy();
     }
 }
 if ($_GET['action'] === 'surrender') {
