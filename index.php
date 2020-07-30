@@ -36,17 +36,21 @@ session_start();
 <nav class="mx-auto">
     <ul class="nav nav-pills d-flex flex-row justify-content-around">
         <li class="nav-item nav-moves">
-            <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=hit">Hit</a>
+            <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=hit" data-toggle="tooltip" data-placement="bottom" title="Player draws another card">Hit</a>
         </li>
         <li class="nav-item nav-moves">
-            <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=stand">Stand</a>
+            <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=stand" data-toggle="tooltip" data-placement="bottom" title="Player passes, dealer draws another card">Stand</a>
         </li>
         <li class="nav-item nav-moves">
-            <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=surrender">Surrender</a>
+            <a class="nav-link btn btn-outline-dark" type="button" href="index.php?action=surrender" data-toggle="tooltip" data-placement="bottom" title="Player surrenders">Surrender</a>
         </li>
     </ul>
 </nav>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
 <?php

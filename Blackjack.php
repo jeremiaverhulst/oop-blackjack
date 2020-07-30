@@ -47,7 +47,7 @@ class Blackjack
             $scorePlayer += $card->getValue();
         }
         echo "</div>";
-        echo "<h3 class='text-center scoreOutput mx-auto'>Score: {$scorePlayer}</h3>";
+        echo "<h3 class='text-center scoreOutput mx-auto'><span>Score:</span> {$scorePlayer}</h3>";
         echo "<h2 class='text-center'>Dealer</h2>";
         echo "<div class='container text-center'>";
         foreach($this->dealer->getCards() AS $card) {
@@ -55,7 +55,7 @@ class Blackjack
             $scoreDealer += $card->getValue();
         }
         echo "</div>";
-        echo "<h3 class='text-center'>Score: {$scoreDealer}</h3>";
+        echo "<h3 class='text-center scoreOutput mx-auto'><span>Score:</span> {$scoreDealer}</h3>";
     }
 
 
